@@ -1,0 +1,57 @@
+---
+dependency:
+  name: galaxy
+  options:
+    role-file: requirements.yml
+
+driver:
+  name: docker
+
+lint:
+  name: yamllint
+  options:
+    config-file: ${DEV_MOLECULE_RULES}/yaml-lint.yml
+
+platforms:
+  - name: ansible-role-tvheadend-Alpine35
+    image: lansible/alpine:3.5
+
+  - name: ansible-role-tvheadend-Alpine34
+    image: lansible/alpine:3.4
+
+  - name: ansible-role-tvheadend-CentOS7
+    image: lansible/centos:7
+
+  - name: ansible-role-tvheadend-Debian9
+    image: lansible/debian:9
+
+  - name: ansible-role-tvheadend-Debian8
+    image: lansible/debian:8
+
+  - name: ansible-role-tvheadend-Fedora27
+    image: lansible/fedora:27
+
+  - name: ansible-role-tvheadend-Fedora26
+    image: lansible/fedora:26
+
+  - name: ansible-role-tvheadend-Fedora25
+    image: lansible/fedora:26
+
+  - name: ansible-role-tvheadend-Ubuntu1604
+    image: lansible/ubuntu:16.04
+
+provisioner:
+  name: ansible
+  options:
+    v: true
+  config_options:
+    defaults:
+      callback_whitelist: profile_tasks
+  lint:
+    name: ansible-lint
+    options:
+      c: ${DEV_MOLECULE_RULES}/ansible-lint.yml
+
+scenario:
+  name: default
+
