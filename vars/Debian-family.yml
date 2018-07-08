@@ -1,2 +1,6 @@
 ---
-ansible-role-tvheadend_prerequisites: []
+#tvheadend_prerequisites:
+#  - dirmngr
+tvheadend_prerequisites: []
+tvheadend_gpg_key: 379CE192D401AB61
+tvheadend_repo_url: "deb https://dl.bintray.com/tvheadend/deb {{ ansible_distribution_release | lower }} {{ tvheadend_build_type }}-{{ tvheadend_version }}"

@@ -1,6 +1,6 @@
 ---
-- include: load-variables.yml
+- include_tasks: load-variables.yml
 
-- include: setup-epel.yml
+- include_tasks: setup-prerequisite.yml
 
-- include: setup-prerequisite.yml
+- include_tasks: install-tvheadend.yml

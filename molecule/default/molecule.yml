@@ -13,31 +13,25 @@ lint:
     config-file: ${DEV_MOLECULE_RULES}/yaml-lint.yml
 
 platforms:
-  - name: ansible-role-tvheadend-Alpine35
-    image: lansible/alpine:3.5
-
-  - name: ansible-role-tvheadend-Alpine34
-    image: lansible/alpine:3.4
-
-  - name: ansible-role-tvheadend-CentOS7
+  - name: tvheadend-CentOS7
     image: lansible/centos:7
 
-  - name: ansible-role-tvheadend-Debian9
+  - name: tvheadend-Debian9
     image: lansible/debian:9
 
-  - name: ansible-role-tvheadend-Debian8
+  - name: tvheadend-Debian8
     image: lansible/debian:8
 
-  - name: ansible-role-tvheadend-Fedora27
-    image: lansible/fedora:27
+#  - name: tvheadend-Fedora27
+#    image: lansible/fedora:27
+#
+#  - name: tvheadend-Fedora26
+#    image: lansible/fedora:26
+#
+#  - name: tvheadend-Fedora25
+#    image: lansible/fedora:26
 
-  - name: ansible-role-tvheadend-Fedora26
-    image: lansible/fedora:26
-
-  - name: ansible-role-tvheadend-Fedora25
-    image: lansible/fedora:26
-
-  - name: ansible-role-tvheadend-Ubuntu1604
+  - name: tvheadend-Ubuntu1604
     image: lansible/ubuntu:16.04
 
 provisioner:
@@ -54,4 +48,3 @@ provisioner:
 
 scenario:
   name: default
-

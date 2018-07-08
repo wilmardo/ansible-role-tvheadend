@@ -1,2 +1,4 @@
 ---
-ansible-role-tvheadend_download_dir: ~
+tvheadend_version: 4.2
+# Build type to install possibilties are: release, stable, unstable (https://tvheadend.org/projects/tvheadend/wiki/RpmRepository)
+tvheadend_build_type: release

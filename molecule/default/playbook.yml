@@ -3,3 +3,12 @@
   hosts: all
   roles:
     - role: ansible-role-tvheadend
+
+  post_tasks:
+    - name: Wait for TvHeadend to succesfully restart
+      wait_for:
+        port: 9981
+
+    - name: Test TvHeadend webinterface
+      uri:
+        url: "http://'':''@{{ inventory_hostname }}:9981"

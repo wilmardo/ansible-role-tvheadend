@@ -1,0 +1,55 @@
+---
+- block:
+    - name: Add tvheadend apt key
+      apt_key:
+        keyserver: keyserver.ubuntu.com
+        id: "{{ tvheadend_gpg_key }}"
+        state: present
+
+    - name: Add tvheadend apt repository
+      apt_repository:
+        repo: "{{ tvheadend_repo_url }}"
+        state: present
+        filename: tvheadend
+
+    - name: Install tvheadend with apt
+      apt:
+        name: tvheadend
+        state: present
+        update_cache: true
+      environment:
+        DEBIAN_FRONTEND: noninteractive
+      notify: restart tvheadend
+
+  when: ansible_os_family == "Debian"
+
+- block:
+    - name: Add tvheadend repository
+      yum_repository:
+        name: "bintray-tvheadend-{{ tvheadend_build_type }}"
+        description: TvHeadend repository
+        baseurl: "{{ tvheadend_repo_url }}"
+        gpgcheck: false
+
+    - name: Install tvheadend with yum
+      yum:
+        name: tvheadend
+        state: present
+        update_cache: true
+      notify: restart tvheadend
+
+  when: ansible_distribution == "CentOS"
+
+- block:
+    - name: Add tvheadend repository
+      command: "dnf config-manager --add-repo {{ tvheadend_repo_url }}"
+      args:
+        warn: false
+
+    - name: Install tvheadend with dnf
+      dnf:
+        name: tvheadend
+        state: present
+      notify: restart tvheadend
+
+  when: ansible_distribution == "Fedora"

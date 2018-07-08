@@ -1,6 +1,0 @@
----
-ansible-role-tvheadend_sni_packages:
-  - python-urllib3
-  - pyOpenSSL
-  - python-ndg_httpsclient
-  - python-pyasn1

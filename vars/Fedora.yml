@@ -1,0 +1,4 @@
+---
+tvheadend_prerequisites:
+  - dnf-command(config-manager)
+tvheadend_repo_url: "https://dl.bintray.com/tvheadend/fedora/bintray-tvheadend-fedora-{{ tvheadend_version }}-{{ tvheadend_build_type }}.repo"
